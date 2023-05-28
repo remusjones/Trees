@@ -376,7 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 20, y: 20}
   quadTreeItemPerQuad: 25
-  itemCount: 500
+  itemCount: 1000
   items: []
   rect:
     serializedVersion: 2

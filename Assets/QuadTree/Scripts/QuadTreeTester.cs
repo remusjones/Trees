@@ -87,13 +87,11 @@ namespace Trees.Scripts
                 polygonCorners[3] = center + new Vector3(halfWidth,0 , -halfHeight);
                 Handles.DrawAAConvexPolygon(polygonCorners);
                 
-                
-                Handles.color = new Color(0,0,0,1f);
+                Handles.color = Color.black;
                 foreach (QuadTreeGameObject item in self.items)
                 {
                     Handles.DrawSolidDisc(new Vector3(item.Position.x, 0f, item.Position.y), Vector3.up, 0.05f );
                 }
-                Handles.color = Color.black;
                 self.quadTree?.DrawHandles();
             }
         }

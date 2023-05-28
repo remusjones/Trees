@@ -154,6 +154,14 @@ public class QuadTree<T> where T : IQuadTreeItem
         if (RemainingItemsInCell() == 0)
             return;
         Handles.color = Color.HSVToRGB((depth / (float) highestDepth), 1f, 1f);
+        if (!listPoolHasReleased)
+        {
+            foreach (T item in storedQuadTreeItems)
+            {
+                Handles.DrawWireDisc(new Vector3(item.Position.x, 0f, item.Position.y), Vector3.up, 0.05f);
+            }
+        }
+
         Handles.DrawLine(new Vector3(bounds.x, 0, bounds.y), new Vector3(bounds.x, 0, bounds.y + bounds.height));
         Handles.DrawLine(new Vector3(bounds.x, 0, bounds.y), new Vector3(bounds.x + bounds.width, 0, bounds.y));
         Handles.DrawLine(new Vector3(bounds.x + bounds.width, 0, bounds.y),
@@ -161,6 +169,7 @@ public class QuadTree<T> where T : IQuadTreeItem
         Handles.DrawLine(new Vector3(bounds.x, 0, bounds.y + bounds.height),
             new Vector3(bounds.x + bounds.width, 0, bounds.y + bounds.height));
         if (cells[0] == null) return;
+        
         foreach (QuadTree<T> t in cells)
         {
             t?.DrawHandles(depth + 1);
