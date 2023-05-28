@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.Pool;
-using UnityEngine.Profiling;
 
 public interface IQuadTreeItem
 {
@@ -142,8 +143,8 @@ public class QuadTree<T> where T : IQuadTreeItem
         return bounds.Contains(position);
     }
     
+    
 #if UNITY_EDITOR
-
     private static int highestDepth = 1;
     public void DrawHandles(int depth = 0)
     {
